@@ -1,0 +1,46 @@
+/* Евгений и Кристина: мобильный первый экран (правка Кристины 2026-11-16).
+   Только телефон (до 640px). Компьютерная версия не меняется, кроме удаления дубля над заголовком. */
+
+/* маленькая строка над заголовком дублирует h1: убираем везде */
+.s-eyebrow { display: none !important; }
+
+/* меню-бургер: на компьютере скрыто */
+.k-burger, .k-menu { display: none; }
+
+@media (max-width: 640px) {
+  .s-bar .s-btn--sm { display: none; }          /* кнопка записи сверху убрана, остаётся нижняя панель */
+  .s-bar__right { gap: 0; }
+
+  .k-burger { display: inline-flex; flex-direction: column; justify-content: center; gap: 5px; width: 44px; height: 44px; padding: 0 10px;
+    background: transparent; border: 0; cursor: pointer; color: inherit; }
+  .k-burger span { display: block; height: 2px; border-radius: 2px; background: currentColor; transition: transform .25s ease, opacity .2s ease; }
+  .k-burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .k-burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .k-burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .k-menu { display: none; position: fixed; z-index: 29; top: 64px; left: 0; right: 0; padding: 8px var(--gut) 20px;
+    background: var(--c-canvas); border-bottom: 1px solid var(--hair); }
+  .k-menu.is-open { display: block; }
+  .k-menu a { display: block; padding: 15px 0; font: 600 1.05rem/1.2 var(--f-display); text-decoration: none; border-bottom: 1px solid var(--hair); }
+  .k-menu a:last-child { border-bottom: 0; }
+
+  /* первый экран: фото владельца на весь экран, сверху один заголовок */
+  .s-hero { display: block; padding: 0; }
+  .s-hero__text { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: calc(100svh - 64px) auto auto auto;
+    margin-inline: calc(-1 * var(--gut)); }
+  .s-hero__photo { display: block !important; grid-area: 1 / 1; margin: 0; position: relative; min-height: 0; overflow: hidden; }
+  .s-hero__photo img { width: 100%; height: 100%; aspect-ratio: auto; object-fit: cover; border-radius: 0; border: 0; display: block; }
+  .s-hero__photo::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(180deg, rgba(8, 11, 17, .82) 0%, rgba(8, 11, 17, .45) 38%, rgba(8, 11, 17, .08) 100%); }
+  .s-hero__text h1 { grid-area: 1 / 1; z-index: 2; align-self: start; margin: 0; padding: 30px var(--gut) 0; color: #fff;
+    font-size: clamp(2rem, 9.4vw, 2.7rem); text-shadow: 0 2px 18px rgba(0, 0, 0, .35); }
+
+  /* всё остальное первого экрана уходит ниже фото */
+  .s-hero__text .s-lead { grid-row: 2; padding: 28px var(--gut) 0; margin: 0; }
+  .s-hero__text .s-ticks { grid-row: 3; padding: 18px var(--gut) 0; margin: 0; }
+  .s-hero__text .s-rating { grid-row: 4; padding: 18px var(--gut) 0; margin: 0; }
+  .s-hero__widget { margin-top: 36px; }
+
+  .s-section, .s-photos { scroll-margin-top: 72px; }
+  #widget { scroll-margin-top: 72px; }
+}

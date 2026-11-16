@@ -1,0 +1,15 @@
+/* Евгений и Кристина: общий вид (правка Кристины 2026-11-16).
+   Жёлтый берём с вывески заказчика (Фелит: жёлтые ворота и вывеска). Для другого бизнеса менять --k-yellow по его фото. */
+/* ЖЕЛЕЗНО: цвет кнопки = цвет вывески заказчика (замерить по фото). Имя переменной историческое. */
+:root { --k-yellow: #E9C440; --k-yellow-ink: #1a1405; }
+
+/* звёзды рейтинга жёлтые, как в Яндекс.Картах (частичная звезда остаётся: 4,7 = почти полная пятая) */
+.s-reviews__stars::after { color: var(--k-yellow) !important; }
+.s-reviews__stars::before { color: color-mix(in srgb, var(--k-yellow) 22%, transparent); }
+.s-rating .s-reviews__stars { font-size: 1.05rem; margin: 0 .5em 0 .45em; vertical-align: -.12em; }
+
+/* главные кнопки (запись, отправить) жёлтые, текст тёмный для контраста; «Позвонить» (ghost) не трогаем */
+.s-btn:not(.s-btn--ghost) { background: var(--k-yellow); color: var(--k-yellow-ink); border-color: var(--k-yellow); }
+
+/* заголовок без переносов слов по слогам (слова Евгения, урок 15: «чтобы они не разрывались») */
+h1 { hyphens: none !important; -webkit-hyphens: none !important; overflow-wrap: normal !important; word-break: normal !important; }

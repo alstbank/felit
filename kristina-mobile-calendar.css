@@ -1,0 +1,21 @@
+/* Евгений и Кристина: СТАНДАРТ телефона для «Продающего» (решение Кристины 2026-11-16). Заголовок, рейтинг строкой и календарь записи сразу, на фоне фото заказчика.
+   Подключается после kristina-mobile.css. Только телефон (до 640px), только шаблон «Продающий» (средний). */
+@media (max-width: 640px) {
+  .s-hero { position: relative; display: flex; flex-direction: column; isolation: isolate;
+    margin-inline: calc(-1 * var(--gut)); padding: 26px var(--gut) 34px; }
+  .s-hero__text { display: contents; }
+
+  /* фото владельца фоном под всем первым экраном */
+  .s-hero__photo { position: absolute !important; inset: 0; z-index: -1; margin: 0; display: block !important; }
+  .s-hero__photo img { width: 100%; height: 100%; object-fit: cover; }
+  .s-hero__photo::after { background: linear-gradient(180deg, rgba(8, 11, 17, .78) 0%, rgba(8, 11, 17, .5) 40%, rgba(8, 11, 17, .72) 100%); }
+
+  /* порядок: заголовок, рейтинг строкой, календарь. Пояснения и галочки на первом экране прячем (они ниже в разделах) */
+  .s-hero__text h1 { order: 1; padding: 0 0 12px; align-self: stretch; }
+  .s-hero__text .s-rating { order: 2; padding: 0 0 20px; margin: 0; color: #fff; font-size: .8rem; white-space: nowrap; }
+  .s-hero__widget { order: 3; margin: 0; }
+  .s-hero__text .s-lead, .s-hero__text .s-ticks { display: none; }
+
+  /* карточка календаря полупрозрачная: фото видно сквозь неё */
+  .s-widget { background: rgba(12, 17, 27, .8); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-color: rgba(255, 255, 255, .14); }
+}
